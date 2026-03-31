@@ -1,161 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Cristi Tesalonika</title>
 
     <style>
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            margin: 0;
-            background: #ffffff;
-            color: #333;
-        }
-
-        header {
-            background: linear-gradient(to right, #87CEEB, #5DADE2);
-            color: white;
-            padding: 60px 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #87CEEB, #ffffff);
             text-align: center;
+            overflow: hidden;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 36px;
+        .container {
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
         }
 
-        header p {
-            margin-top: 10px;
+        img {
+            width: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        p {
             font-size: 18px;
+            margin: 10px 0;
         }
 
-        section {
-            padding: 50px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        h2 {
-            border-left: 5px solid #87CEEB;
-            padding-left: 10px;
-        }
-
-        .projects {
-            display: grid;
-            gap: 20px;
-        }
-
-        .card {
-            padding: 25px;
-            border-radius: 12px;
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: black;
             color: white;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .green {
-            background: #00A859;
-        }
-
-        .blue {
-            background: #2A52BE;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 10px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-size: 12px;
-        }
-
-        .contact a {
-            display: inline-block;
-            margin-top: 10px;
-            margin-right: 10px;
-            padding: 10px 15px;
-            border-radius: 8px;
             text-decoration: none;
-            color: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
-        .email {
-            background: #555;
+        .btn:hover {
+            background: #333;
+            transform: scale(1.05);
         }
 
-        .whatsapp {
-            background: #25D366;
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #f2f2f2;
-            font-size: 14px;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Click transition overlay */
+        .transition {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #87CEEB;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .transition.active {
+            opacity: 1;
+            pointer-events: all;
         }
     </style>
 </head>
 
 <body>
 
-<header>
+<div class="transition" id="transition"></div>
+
+<div class="container">
+
+    <img src="https://via.placeholder.com/120" alt="profile">
+
     <h1>Cristi Tesalonika</h1>
+
     <p>UX Designer | Educational Board Game Designer</p>
-    <p>Designing meaningful learning experiences for children</p>
-</header>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I am a UX Designer and Educational Board Game Designer focused on creating 
-        engaging, meaningful, and fun learning experiences for children. 
-        I combine education, game mechanics, and user experience to design impactful tools.
-    </p>
-</section>
+    <p>Designing meaningful learning experiences through play</p>
 
-<section>
-    <h2>Featured Projects</h2>
+    <a class="btn" href="home.html" onclick="goToPage(event)">Explore My Work</a>
 
-    <div class="projects">
+</div>
 
-        <div class="card green">
-            <h3>YU-HUU! Financial Literacy Board Game</h3>
-            <p>
-                A board game that teaches children financial decision-making, 
-                responsibility, and money management through interactive play.
-            </p>
-            <span class="tag">Game Design</span>
-            <span class="tag">Financial Literacy</span>
-        </div>
+<script>
+function goToPage(e) {
+    e.preventDefault();
+    document.getElementById("transition").classList.add("active");
 
-        <div class="card blue">
-            <h3>Reading Game for Social Needs</h3>
-            <p>
-                A collaborative reading game designed to improve literacy skills 
-                and social awareness in children.
-            </p>
-            <span class="tag">Education</span>
-            <span class="tag">UX Learning</span>
-        </div>
+    setTimeout(() => {
+        window.location.href = "home.html";
+    }, 500);
+}
+</script>
 
-</section>
-
-<section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:cristitesalonika49@gmail.com">cristitesalonika49@gmail.com</a></p>
-    
-    <a class="whatsapp" href="https://wa.me/089622168343" target="_blank">
-        Chat via WhatsApp
-    </a>
-</section>
-    
-<footer>
-    © 2026 Cristi Tesalonika — Educational Game Designer
-</footer>
-    
 </body>
 </html>
